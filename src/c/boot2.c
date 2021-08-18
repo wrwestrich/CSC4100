@@ -39,11 +39,14 @@ int main(void)
     __asm__("hlt");
     k_clearScr();
   }
-  k_writeScr(buffer, 2, 0);
+  k_clearScr();
+  k_writeScr("Enter Username: ", 1, 0);
+  buffer[index - 1] = 0;
+  k_writeScr(buffer, 1, 16);
   //Clear input buffer
   clearBuffer();
 
-  k_writeScr("Enter password: ", 3, 0);
+  k_writeScr("Enter password: ", 2, 0);
 
   //Read password
   while (buffer[index - 1] != '\n')
