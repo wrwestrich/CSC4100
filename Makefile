@@ -5,7 +5,7 @@ run: install
 	qemu-system-i386 -d guest_errors -boot a -fda a.img
 
 debug: install
-	qemu-system-i386 -S -s -boot a -fda a.img
+	qemu-system-i386 -display gtk,gl=on -S -s -boot a -fda a.img
 
 install: boot1 boot2 a.img
 	mformat a:
@@ -17,7 +17,7 @@ clean:
 	rm *.o *.elf boot1 boot2 boot1.list a.img
 
 a.img:
-	bximage -fd -size=1.44 -q a.img
+	bximage -q -mode="create" -fd="1.44M" a.img
 
 boot1: boot2 ./src/asm/boot1.asm
 	nasm -l boot1.list -DENTRY=`./bin/getaddr.sh main` ./src/asm/boot1.asm
