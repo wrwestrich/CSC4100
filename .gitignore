@@ -1,0 +1,6 @@
+*.elf
+*.list
+a.img
+*.o
+boot1
+boot2
